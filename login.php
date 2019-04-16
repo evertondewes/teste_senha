@@ -31,9 +31,10 @@ if (!is_null($senhaAberta)) {
     $logou = password_verify($senhaAberta, $usuario[0]['senha'] );
 
     if ($logou) {
+        session_start();
+        $_SESSION['nome'] = $usuario[0]['nome'];
         echo 'Senha válida';
     } else {
-
         echo 'Senha inválida.';
     }
 

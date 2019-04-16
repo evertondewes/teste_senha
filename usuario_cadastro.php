@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if(session_id()== null || !isset($_SESSION['nome']) ) {
+    die('Usuário não logado!');
+}
+
+
+?>
 <html>
 <body>
 <form method="post">
