@@ -9,12 +9,14 @@ if(session_id()== null || !isset($_SESSION['nome']) ) {
 ?>
 <html>
 <body>
+Bom dia <?php echo $_SESSION['nome'] ?>
 <form method="post">
     CADASTRO<BR>
     Novo Usuário:<input type="text" name="nome"/><br>
     Senha:<input type="password" name="senha"/><br>
     <input type="submit" name="action" value="Cadastrar"/>
 </form>
+<a href="logout.php">Sair</a>
 </body>
 </html>
 <?php
@@ -34,6 +36,8 @@ if (!is_null($senhaAberta)) {
 
     $senhaParaArmazenarNoBanco =
         password_hash($senhaAberta, PASSWORD_DEFAULT);
+
+    echo '<pre>"' . print_r($senhaParaArmazenarNoBanco, true) . '"</pre>';
 
     $sql = "insert into usuario(nome, senha) " .
            "VALUE('$nome', '$senhaParaArmazenarNoBanco');";
